@@ -23,12 +23,14 @@
           <tbody>
             {% for ticker in tickers %}
             <tr>
-              <th>{{ ticker }}</th>
+              <th>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".collapse{{ ticker }}">
+                  {{ ticker }}
+                </button>
+              </th>
               {% for interval in intervals %}
                 <td>{% get_signal ticker interval %}</td>
               {% endfor %}
-    {#          <td><a href="{% url 'edit_field' field.pk %}"><i class="far fa-edit"></i></a></td>#}
-    {#          <td><a href="{% url 'delete_field' field.pk %}"><i class="fas fa-trash"></i></a></td>#}
             </tr>
             {% endfor %}
           </tbody>

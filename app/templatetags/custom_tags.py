@@ -26,7 +26,8 @@ def get_signal(ticker, interval):
 				extra_style = "color:MediumSeaGreen;"
 			elif signal.bearish:
 				extra_style = "color:Tomato;"
-			result += f'<div style="' \
+			result += f'<div class="collapse{ticker} collapse show" ' \
+					  f'style="' \
 					  f'border-style: solid; ' \
 					  f'border-width: 1px; ' \
 					  f'padding: 5px; ' \

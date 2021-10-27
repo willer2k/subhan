@@ -7,7 +7,6 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
 from app.models import Signal
-import json
 
 
 class HomepageView(LoginRequiredMixin, View):
@@ -73,10 +72,6 @@ class HookView(View):
         # body = b'BULL_ CROSS\\nSymbol: FX:GBPUSD:1\\nPrice: 1.37649'
         signal = Signal().init_signal(request.body.decode('utf-8'))
         signal.save()
-
-        with open('request.json', 'w') as fd:
-            json.dump(request.POST.dict(), fd)
-
         return JsonResponse({
             "status": "success",
             "code": 200,}, safe=False)

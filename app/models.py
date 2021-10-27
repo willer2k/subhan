@@ -34,9 +34,9 @@ class Signal(models.Model):
         self.interval = messages[1].split(':')[3].strip()
         self.price = messages[2].split(':')[1].strip()
 
-        if 'bull' in self.title.lower():
+        if 'bull' in self.title.lower() or 'buy' in self.title.lower():
             self.bullish = True
 
-        if 'bear' in self.title.lower():
+        if 'bear' in self.title.lower() or 'sell' in self.title.lower():
             self.bearish = True
         return self
