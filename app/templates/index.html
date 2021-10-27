@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_tags %}
+
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    Most Recent Signals
+  </div>
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <table class="table table-responsive" id="theTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              {% for interval in intervals %}
+              <th>{{interval}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for ticker in tickers %}
+            <tr>
+              <th>{{ ticker }}</th>
+              {% for interval in intervals %}
+                <td>{% get_signal ticker interval %}</td>
+              {% endfor %}
+    {#          <td><a href="{% url 'edit_field' field.pk %}"><i class="far fa-edit"></i></a></td>#}
+    {#          <td><a href="{% url 'delete_field' field.pk %}"><i class="fas fa-trash"></i></a></td>#}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}
