@@ -31,9 +31,15 @@ class HomepageView(LoginRequiredMixin, View):
         for interval in _intervals:
             intervals.append(interval['interval'])
 
+        def ticker_sort_func(elem):
+            try:
+                return int(''.join([x for x in elem if x.isdigit()]))
+            except:
+                return 0
+
         context = {
             'view': self,
-            'tickers': sorted(tickers),
+            'tickers': sorted(tickers, key=ticker_sort_func),
             'intervals': sorted(intervals),
         }
         kwargs.update(context)
